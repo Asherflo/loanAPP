@@ -1,28 +1,30 @@
 package com.asherflo.loanApp.service.userService;
 
-import com.asherflo.loanApp.dto.request.UserRequest;
-import com.asherflo.loanApp.dto.response.user.UserResponse;
-import com.asherflo.loanApp.dto.response.user.UserResponseDto;
+import com.asherflo.loanApp.controller.dto.request.UserRequest;
+import com.asherflo.loanApp.controller.dto.response.user.UserResponse;
+import com.asherflo.loanApp.controller.dto.response.user.UserResponseDto;
 import com.asherflo.loanApp.model.User;
 import com.asherflo.loanApp.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
 
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+//    public UserServiceImpl(UserRepository userRepository) {
+//        this.userRepository = userRepository;
+//    }
 
     @Override
     public UserResponse createUser(UserRequest userRequest) {
         UserResponse userResponse = new UserResponse();
         User user = new User();
-        user.setUserId(userRequest.getUserId());
+//        user.setUserId(userRequest.getUserId());
         user.setFirstName(userRequest.getFirstName());
         user.setLastName(userRequest.getLastName());
         user.setDateOfBirth(userRequest.getDateOfBirth());

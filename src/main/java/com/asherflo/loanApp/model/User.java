@@ -25,14 +25,19 @@ public class User {
     private long userId;
     private  String firstName;
     private String lastName;
+    @Enumerated(EnumType.STRING)
     private Gender gender;
     @Column(unique = true)
     private String email;
     private  String password;
     private String accountNumber;
+
+    @Enumerated(EnumType.STRING)
     private AccountType accountType;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
+    @Enumerated(EnumType.STRING)
     private Address address;
     private String phoneNumber;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")

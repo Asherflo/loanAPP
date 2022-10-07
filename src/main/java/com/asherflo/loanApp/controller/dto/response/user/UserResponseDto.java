@@ -1,4 +1,4 @@
-package com.asherflo.loanApp.dto.response.user;
+package com.asherflo.loanApp.controller.dto.response.user;
 
 import com.asherflo.loanApp.model.User;
 import lombok.AllArgsConstructor;

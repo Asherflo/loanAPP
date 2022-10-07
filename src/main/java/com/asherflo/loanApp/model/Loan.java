@@ -1,5 +1,8 @@
 package com.asherflo.loanApp.model;
 
+import com.asherflo.loanApp.model.enums.LoanType;
+import com.asherflo.loanApp.model.enums.LoanStatus;
+import com.asherflo.loanApp.model.enums.PaymentStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,16 +18,20 @@ import java.math.BigDecimal;
 @Table(name = "loan_details")
 public class Loan {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long loanId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int loanId;
     private  String accountNumber;
-    private String loanType;
+
+    @Enumerated(EnumType.STRING)
+    private LoanType loanType;
     private BigDecimal loanAmount;
     private BigDecimal loanBalance;
     private BigDecimal interestRate;
     @ManyToOne
     private  User user;
-    private String loanStatus;
-    private String paymentStatus;
+    @Enumerated(EnumType.STRING)
+    private PaymentStatus paymentStatus;
+    @Enumerated(EnumType.STRING)
+    private LoanStatus loanStatus;
 
 }

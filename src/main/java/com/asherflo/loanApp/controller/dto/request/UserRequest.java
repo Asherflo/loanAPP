@@ -1,8 +1,9 @@
-package com.asherflo.loanApp.dto.request;
+package com.asherflo.loanApp.controller.dto.request;
 
 import com.asherflo.loanApp.model.Address;
 import com.asherflo.loanApp.model.enums.AccountType;
 import com.asherflo.loanApp.model.enums.Gender;
+import com.asherflo.loanApp.model.enums.LoanType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,6 +31,7 @@ public class UserRequest {
     private  String password;
     private String accountNumber;
     private AccountType accountType;
+    private LoanType loanType;
     private Address address;
     private String phoneNumber;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
