@@ -8,6 +8,6 @@ import com.asherflo.loanApp.model.enums.LoanType;
 public interface LoanService {
     LoanResponseDto creatLoan(LoanRequest loanRequest);
     Loan searchLoan(String accountNumber);
-
-    LoanResponseDto approveLoan(int loanId , LoanType loanType);
+//
+//    LoanResponseDto approveLoan(int loanId , LoanType loanType);
 }

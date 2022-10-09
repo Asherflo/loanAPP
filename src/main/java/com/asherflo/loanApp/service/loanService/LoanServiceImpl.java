@@ -5,15 +5,17 @@ import com.asherflo.loanApp.controller.dto.response.loan.LoanResponseDto;
 import com.asherflo.loanApp.model.Loan;
 import com.asherflo.loanApp.model.enums.LoanType;
 import com.asherflo.loanApp.repository.LoanRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class LoanServiceImpl implements  LoanService {
-    private final LoanRepository loanRepository;
+    @Autowired
+    private LoanRepository loanRepository;
 
-    public LoanServiceImpl(LoanRepository loanRepository) {
-        this.loanRepository = loanRepository;
-    }
+
 
     @Override
     public LoanResponseDto creatLoan(LoanRequest loanRequest) {
@@ -39,21 +41,17 @@ public class LoanServiceImpl implements  LoanService {
         return loanRepository.findByAccountNUmber(accountNumber);
     }
 
-    @Override
-    public LoanResponseDto approveLoan(int loanId, LoanType loanType) {
-        LoanResponseDto responseDto = new LoanResponseDto();
-        Loan existingLoan= loanRepository.findLoanByLoanIdAndLoanType(loanId,loanType);
-            if(existingLoan == null){
-                responseDto.setMessage("Error approving the Loan");
-            }
-            else{
-                loanRepository.approveLoan( loanId);
-                responseDto.setMessage("Loan approved successfully");
-            }
-            return responseDto;
-
-
-    }
-
-
+//    @Override
+//    public LoanResponseDto approveLoan(int loanId, LoanType loanType) {
+//        LoanResponseDto responseDto = new LoanResponseDto();
+//        Loan existingLoan= loanRepository.findLoanByLoanIdAndLoanType(loanId,loanType);
+//            if(existingLoan == null){
+//                responseDto.setMessage("Error approving the Loan");
+//            }
+//            else{
+//                loanRepository.approveLoan(loanId);
+//                responseDto.setMessage("Loan approved successfully");
+//            }
+//            return responseDto;
+//    }
 }

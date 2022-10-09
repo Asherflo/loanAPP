@@ -3,6 +3,10 @@ package com.asherflo.loanApp.model;
 import com.asherflo.loanApp.model.enums.AccountType;
 import com.asherflo.loanApp.model.enums.Gender;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,7 +44,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Address address;
     private String phoneNumber;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-    private LocalDateTime dateOfBirth;
+    private LocalDate dateOfBirth;
 
 }

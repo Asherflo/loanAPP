@@ -19,6 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -35,8 +36,8 @@ class UserServiceTest {
     @Autowired
     private LoanService loanService;
 
-    @Autowired
-    private PaymentService paymentService;
+//    @Autowired
+//    private PaymentService paymentService;
 //    @BeforeEach
 //    void setUp() {
 //        Address address = Address.builder()
@@ -84,7 +85,7 @@ class UserServiceTest {
         userRequest.setLastName("Agnes");
         userRequest.setGender(FEMALE);
         userRequest.setAddress(address);
-        userRequest.setDateOfBirth(LocalDateTime.now());
+        userRequest.setDateOfBirth(LocalDate.from(LocalDateTime.now()));
         userRequest.setPassword("@qwe123#");
         userRequest.setEmail("pencilisup@gmail.comm");
         userRequest.setPhoneNumber("234789099912");
@@ -132,18 +133,17 @@ class UserServiceTest {
         assertEquals("0168924692",loan.getAccountNumber());
     }
 
-    @Test
-    @DisplayName("test to approve loan")
-    void approveLoanForEligibleUser(){
-        LoanResponseDto loanResponseDto = loanService.approveLoan(1,AUTO);
-        assertEquals("Loan approved successfully",loanResponseDto.getMessage());
-
-//
 //    @Test
-//    @DisplayName("test that user can search for payment")
-//    void testThatUserCanSearchForPayment(){
+//    @DisplayName("test to approve loan")
+//    void approveLoanForEligibleUser(){
+//        LoanResponseDto loanResponseDto = loanService.approveLoan(1,AUTO);
+//        assertEquals("Loan approved successfully",loanResponseDto.getMessage());
 //
-//
-  }
+////
+    @Test
+    @DisplayName("test that loan can be paid")
+    void testThatUserCanBePaid () {
 
+
+    }
 }
