@@ -24,7 +24,6 @@ public class Payment {
     private Loan loanId;
 
 
-
     @Column(name = "payment_status")
     private PaymentStatus paymentStatus;
 

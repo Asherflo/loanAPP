@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 public class Loan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int loanId;
+    private long loanId;
     private  String accountNumber;
 
     @Enumerated(EnumType.STRING)

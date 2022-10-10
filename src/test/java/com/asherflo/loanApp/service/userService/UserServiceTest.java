@@ -9,6 +9,9 @@ import com.asherflo.loanApp.model.Address;
 import com.asherflo.loanApp.model.Loan;
 import com.asherflo.loanApp.model.Payment;
 import com.asherflo.loanApp.model.User;
+import com.asherflo.loanApp.model.enums.LoanStatus;
+import com.asherflo.loanApp.model.enums.LoanType;
+import com.asherflo.loanApp.model.enums.PaymentStatus;
 import com.asherflo.loanApp.service.PaymentService.PaymentService;
 import com.asherflo.loanApp.service.loanService.LoanService;
 import org.junit.jupiter.api.AfterEach;
@@ -22,6 +25,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Optional;
 
 import static com.asherflo.loanApp.model.enums.Gender.FEMALE;
 import static com.asherflo.loanApp.model.enums.LoanType.AUTO;
@@ -139,11 +143,24 @@ class UserServiceTest {
 //        LoanResponseDto loanResponseDto = loanService.approveLoan(1,AUTO);
 //        assertEquals("Loan approved successfully",loanResponseDto.getMessage());
 //
-////
-    @Test
-    @DisplayName("test that loan can be paid")
-    void testThatUserCanBePaid () {
+//
 
 
-    }
+@Test
+@DisplayName("test that loan can be paid")
+    void testThatUserCanBePaid(){
+        Loan loanPayment = new Loan();
+        loanPayment.setLoanType(LoanType.MORTGAGE);
+        loanPayment.setInterestRate(BigDecimal.valueOf(6.5000000));
+        loanPayment.setLoanStatus(LoanStatus.APPROVED);
+        loanPayment.setAccountNumber("0168924692");
+        loanPayment.setLoanAmount(BigDecimal.valueOf(6_000_000));
+        loanPayment.setPaymentStatus(NOT_PAID);
+
+        Payment payments = new Payment();
+        payments.setPaymentDate(Date.from(Instant.now()));
+
+}
+
+
 }

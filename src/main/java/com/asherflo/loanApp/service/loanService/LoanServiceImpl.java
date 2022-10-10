@@ -3,11 +3,12 @@ package com.asherflo.loanApp.service.loanService;
 import com.asherflo.loanApp.controller.dto.request.LoanRequest;
 import com.asherflo.loanApp.controller.dto.response.loan.LoanResponseDto;
 import com.asherflo.loanApp.model.Loan;
-import com.asherflo.loanApp.model.enums.LoanType;
 import com.asherflo.loanApp.repository.LoanRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -39,6 +40,11 @@ public class LoanServiceImpl implements  LoanService {
     @Override
     public Loan searchLoan(String accountNumber) {
         return loanRepository.findByAccountNUmber(accountNumber);
+    }
+
+    @Override
+    public Optional<Loan> findById(long loanId) {
+        return loanRepository.findById(loanId);
     }
 
 //    @Override
